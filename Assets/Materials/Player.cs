@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 	
 	void Awake()
 	{
-		speed = 20.0f;
+		speed = 30.0f;
 		ammo = 0;
 	}
 	void Update()
