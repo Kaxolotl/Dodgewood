@@ -4,52 +4,57 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public LayerMask layerMask;
+    public Rigidbody rigid;
+    Ray ray;
+    RaycastHit hit;
 	public	GameObject	bullet;
 	public	float		speed;
 	public	int			ammo;
+
+    private bool isWall;
 	
 	void Awake()
 	{
-		speed = 30.0f;
+        rigid = GetComponent<Rigidbody>();
+        speed = 30.0f;
 		ammo = 0;
-	}
+        isWall = false;
+
+    }
+
+    bool RayCheck()
+    {
+        if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, 2.5f, layerMask))
+        {
+            Debug.Log(hit.collider.gameObject.name);
+
+            //   Debug.Log(gameObject.transform.position);
+
+            //Debug.DrawLine(gameObject.transform.position, gameObject.transform.forward, Color.red, 3);
+            hit.transform.GetComponent<MeshRenderer>().material.color = Color.red;
+            return true;
+        }
+        else
+            return false;
+    }
 	void Update()
-	{
-        /*
-		 * if ( Input.GetKeyDown("1")) ammo ++;
-         *
-		 * float z = Input.GetAxisRaw("Vertical");
-		 * float x = Input.GetAxisRaw("Horizontal");
+    {
+        UserInputs();
 
-		 * if ( x != 0 || z != 0 )
-		 * {
-		 *     Vector3 dir = x * Vector3.right + z * Vector3.forward;
-         * 
-		 *     transform.rotation = Quaternion.LookRotation(dir);
-		 * 	   transform.position += new Vector3(x, 0.0f, z) * speed * Time.deltaTime;
-		 * }
-         */
-
+  
         if(ammo >= 3)
         {
-            ammo = 3;
+            ammo = 3;// ammo 먹는 부분으로 옮겨야
         }
-
-        /*
-		 * if ( Input.GetKey(KeyCode.Space) && ammo == 3 )
-		 * {
-		 * 	   GameObject clone = Instantiate(bullet);
-		 * 	   clone.GetComponent<Bullet>().Init(transform.position, transform.TransformDirection(Vector3.forward));
-		 * 	   ammo -= 3;
-		 * }
-         */
-
         Movement();
-        UserInputs();
+
     }
 
     void Movement()
     {
+
+
         float z = Input.GetAxisRaw("Vertical");
         float x = Input.GetAxisRaw("Horizontal");
 
@@ -58,9 +63,13 @@ public class Player : MonoBehaviour
             Vector3 dir = x * Vector3.right + z * Vector3.forward;
 
             transform.rotation = Quaternion.LookRotation(dir);
-            transform.position += new Vector3(x, 0.0f, z) * speed * Time.deltaTime;
+            if (!RayCheck())
+            {
+                transform.position += new Vector3(x, 0.0f, z) * speed * Time.deltaTime;
+            }
         }
     }
+    
 
     void UserInputs()
     {
@@ -73,7 +82,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("B Button!");
         }
-        if (Input.GetButtonDown("1P_XBtn") && ammo == 3)
+        if (Input.GetButtonDown("1P_XBtn") || Input.GetKeyDown(KeyCode.Space) && ammo == 3)
         {
             GameObject clone = Instantiate(bullet);
             clone.GetComponent<Bullet>().Init(transform.position, transform.TransformDirection(Vector3.forward));
