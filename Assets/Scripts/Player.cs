@@ -74,6 +74,11 @@ public class Player : MonoBehaviour
                 animator.SetBool("isRun", true);
             }
         }
+        else
+        {
+            charState = CHAR_STATE.IDLE;
+            animator.SetBool("isRun", false);
+        }
     }
     
 
