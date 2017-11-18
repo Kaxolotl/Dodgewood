@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log(hit.collider.gameObject.name);
 
-            //   Debug.Log(gameObject.transform.position);
+            //Debug.Log(gameObject.transform.position);
 
             //Debug.DrawLine(gameObject.transform.position, gameObject.transform.forward, Color.red, 3);
             hit.transform.GetComponent<MeshRenderer>().material.color = Color.red;
@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
         else
             return false;
     }
+
 	void Update()
     {
         UserInputs();
