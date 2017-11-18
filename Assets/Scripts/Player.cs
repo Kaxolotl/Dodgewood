@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CHAR_STATE { IDLE = 0, RUN, }
+
 public class Player : MonoBehaviour
 {
     public LayerMask layerMask;
@@ -12,14 +14,19 @@ public class Player : MonoBehaviour
 	public	float		speed;
 	public	int			ammo;
 
+    Animator animator;
+    CHAR_STATE charState;
+
     private bool isWall;
 	
 	void Awake()
 	{
         rigid = GetComponent<Rigidbody>();
-        speed = 30.0f;
+        speed = 20.0f;
 		ammo = 0;
         isWall = false;
+        animator = GetComponent<Animator>();
+        charState = CHAR_STATE.IDLE;
 
     }
 
@@ -49,13 +56,10 @@ public class Player : MonoBehaviour
             ammo = 3;// ammo 먹는 부분으로 옮겨야
         }
         Movement();
-
     }
 
     void Movement()
     {
-
-
         float z = Input.GetAxisRaw("Vertical");
         float x = Input.GetAxisRaw("Horizontal");
 
@@ -67,7 +71,14 @@ public class Player : MonoBehaviour
             if (!RayCheck())
             {
                 transform.position += new Vector3(x, 0.0f, z) * speed * Time.deltaTime;
+                charState = CHAR_STATE.RUN;
+                animator.SetBool("isRun", true);
             }
+        }
+        else
+        {
+            charState = CHAR_STATE.IDLE;
+            animator.SetBool("isRun", false);
         }
     }
     
@@ -76,14 +87,13 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("1P_ABtn"))
         {
-
             Debug.Log("A Button!");
         }
         if (Input.GetButtonDown("1P_BBtn"))
         {
             Debug.Log("B Button!");
         }
-        if (Input.GetButtonDown("1P_XBtn") || Input.GetKeyDown(KeyCode.Space) && ammo == 3)
+        if ((Input.GetButtonDown("1P_XBtn") || Input.GetKeyDown(KeyCode.Space)) && ammo == 3)
         {
             GameObject clone = Instantiate(bullet);
             clone.GetComponent<Bullet>().Init(transform.position, transform.TransformDirection(Vector3.forward));
@@ -94,14 +104,14 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Y Button!");
         }
-        if (Input.GetButtonDown("1P_LBmp"))
-        {
-            Debug.Log("Left Bumper!");
-        }
-        if (Input.GetButtonDown("1P_RBmp"))
+        if (Input.GetButtonDown("1P_LBmp") || Input.GetKeyDown(KeyCode.LeftShift))
         {
             ammo++;
             Debug.Log("총알 획득!");
+        }
+        if (Input.GetButtonDown("1P_RBmp"))
+        {
+            Debug.Log("회피!");
         }
         if (Input.GetButtonDown("1P_SelectBtn"))
         {
