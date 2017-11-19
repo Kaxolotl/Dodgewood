@@ -484,6 +484,7 @@ MonoBehaviour:
   rigid: {fileID: 784970725}
   bullet: {fileID: 1351629573317114, guid: 6f9d64915db89a84493db81f3ad2a5fd, type: 2}
   speed: 20
+  _ammo: 0
 --- !u!54 &784970725
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -677,6 +678,7 @@ Transform:
   - {fileID: 1303103401}
   - {fileID: 372719370}
   - {fileID: 1955644121}
+  - {fileID: 1403073180}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -892,6 +894,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1396906470}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1403073179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1403073180}
+  m_Layer: 0
+  m_Name: Ammos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1403073180
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1403073179}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1178787191}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1603025631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1093,7 @@ MonoBehaviour:
   rigid: {fileID: 1873192289}
   bullet: {fileID: 1351629573317114, guid: 6f9d64915db89a84493db81f3ad2a5fd, type: 2}
   speed: 30
+  _ammo: 0
 --- !u!54 &1873192289
 Rigidbody:
   m_ObjectHideFlags: 0
