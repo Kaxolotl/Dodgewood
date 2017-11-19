@@ -18,11 +18,11 @@ public class Field : MonoBehaviour
 		if ( ammos.Count >= 10 )
 		{
 			return;
-		}
-		float x = Random.Range(-fieldSize.x*0.5f+fieldPos.x+2.0f, fieldSize.x*0.5f+fieldPos.x-2.0f);
-		float z = Random.Range(-fieldSize.z*0.5f+fieldPos.z+2.0f, fieldSize.z*0.5f+fieldPos.z-2.0f);
+        }
+        float x = Random.Range(-fieldSize.x * 0.5f + fieldPos.x + 2.0f, fieldSize.x * 0.5f + fieldPos.x - 2.0f);
+        float z = Random.Range(-fieldSize.z * 0.5f + fieldPos.z + 2.0f, fieldSize.z * 0.5f + fieldPos.z - 2.0f);
 
-		GameObject clone = Instantiate(ammo);
+        GameObject clone = Instantiate(ammo);
 		clone.transform.position = new Vector3(x, 0.5f, z);
 		clone.name = "Ammo";
 		ammos.Add(clone);

@@ -6,13 +6,28 @@ public enum CHAR_STATE { IDLE = 0, RUN, }
 
 public class Player : MonoBehaviour
 {
+    const int AMMOMAX = 3;
+
     public LayerMask layerMask;
     public Rigidbody rigid;
     Ray ray;
     RaycastHit hit;
 	public	GameObject	bullet;
 	public	float		speed;
-	public	int			ammo;
+	[SerializeField] private int _ammo;
+    public int ammo
+    {
+        get
+        {
+            if (_ammo > AMMOMAX)
+                _ammo = AMMOMAX;
+            return _ammo;
+        }
+        set
+        {
+            _ammo = value;
+        }
+    }
 
     Animator animator;
     CHAR_STATE charState;
@@ -49,13 +64,16 @@ public class Player : MonoBehaviour
 	void Update()
     {
         UserInputs();
-
-  
-        if(ammo >= 3)
-        {
-            ammo = 3;// ammo 먹는 부분으로 옮겨야
-        }
+        
         Movement();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Ammo")
+        {
+            ammo++;
+        }
     }
 
     void Movement()

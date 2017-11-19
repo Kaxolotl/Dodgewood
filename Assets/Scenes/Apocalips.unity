@@ -457,7 +457,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 784970720}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2.6
@@ -484,7 +484,6 @@ MonoBehaviour:
   rigid: {fileID: 784970725}
   bullet: {fileID: 1351629573317114, guid: 6f9d64915db89a84493db81f3ad2a5fd, type: 2}
   speed: 20
-  ammo: 0
 --- !u!54 &784970725
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -555,6 +554,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c175c2d57d1ad004a9e2486970c37aa4, type: 2}
+    - target: {fileID: 100052, guid: 6b22daa4c2276fc49969942c180f93b7, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b22daa4c2276fc49969942c180f93b7, type: 3}
   m_IsPrefabParent: 0
@@ -1060,7 +1063,6 @@ MonoBehaviour:
   rigid: {fileID: 1873192289}
   bullet: {fileID: 1351629573317114, guid: 6f9d64915db89a84493db81f3ad2a5fd, type: 2}
   speed: 30
-  ammo: 0
 --- !u!54 &1873192289
 Rigidbody:
   m_ObjectHideFlags: 0
