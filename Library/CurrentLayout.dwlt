@@ -70,7 +70,7 @@ MonoBehaviour:
   m_MinSize: {x: 887, y: 613}
   m_MaxSize: {x: 16012, y: 18063}
   vertical: 0
-  controlID: 779
+  controlID: 179
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 613}
   m_MaxSize: {x: 12010, y: 18063}
   vertical: 1
-  controlID: 780
+  controlID: 115
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 342}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 1175
+  controlID: 56
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 342}
   m_MaxSize: {x: 12010, y: 8042}
   vertical: 0
-  controlID: 781
+  controlID: 116
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -442,9 +442,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: -0.49105406, y: 16.814335, z: -5.653429}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: -0.49105406, y: 16.814335, z: -5.653429}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -467,13 +467,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.31514576, y: 0.4953506, z: -0.19893986, w: -0.7846933}
+    m_Target: {x: -0.44530472, y: 0.55428165, z: -0.48262116, w: -0.51142204}
     speed: 2
-    m_Value: {x: -0.31514573, y: 0.49535057, z: -0.19893984, w: -0.7846933}
+    m_Value: {x: -0.44530466, y: 0.5542816, z: -0.4826211, w: -0.511422}
   m_Size:
-    m_Target: 97.89586
+    m_Target: 51.382065
     speed: 2
-    m_Value: 97.89586
+    m_Value: 51.382065
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -557,9 +557,9 @@ MonoBehaviour:
     height: 413
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5c200100
-    m_LastClickedID: 73820
-    m_ExpandedIDs: 34d9faff00000000
+    m_SelectedIDs: 6e070000
+    m_LastClickedID: 0
+    m_ExpandedIDs: a6fbffff00000000485a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -575,7 +575,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 0
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 8}
     m_SearchString: 
   m_ExpandedScenes:
   - Apocalips
@@ -620,19 +620,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: M:\Dodgewood
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d21a0100
-    m_LastClickedID: 72402
-    m_ExpandedIDs: 000000003a1a0100301c010000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 11}
+    m_SelectedIDs: 36560000
+    m_LastClickedID: 22070
+    m_ExpandedIDs: 0000000042270000dc39000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -660,7 +660,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003a1a0100301c0100
+    m_ExpandedIDs: 0000000042270000dc390000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -687,24 +687,24 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: a65a0000b85a000082280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Ammo
-      m_OriginalName: Ammo
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 74092
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 4}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0

@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
 
     bool RayCheck()
     {
-        if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, 2.5f, layerMask))
+        if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, 4f, layerMask))
         {
             Debug.Log(hit.collider.gameObject.name);
 
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         else
         {
             charState = CHAR_STATE.IDLE;
-            animator.SetBool("isRun", false);
+            animator.SetBool("isRun", false); // 트리거 사용하거나 기본상태 설정해야겟
         }
     }
     
