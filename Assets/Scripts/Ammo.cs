@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour {
 
-    [SerializeField] Field field;
+    public Field field;
 
-    void Awake()
+    void Start()
     {
-        field = GetComponent<Field>();
+        field = transform.parent.GetComponent<Field>();
     }
 
     private void OnTriggerEnter(Collider other)

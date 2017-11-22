@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 	{
         rigid = GetComponent<Rigidbody>();
         speed = 20.0f;
-		ammo = 0;
+		ammo = AMMOMAX;
         isWall = false;
         animator = GetComponent<Animator>();
         charState = CHAR_STATE.IDLE;
@@ -50,10 +50,7 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, 4f, layerMask))
         {
             Debug.Log(hit.collider.gameObject.name);
-
-            //Debug.Log(gameObject.transform.position);
-
-            //Debug.DrawLine(gameObject.transform.position, gameObject.transform.forward, Color.red, 3);
+            
             hit.transform.GetComponent<MeshRenderer>().material.color = Color.red;
             return true;
         }
@@ -111,7 +108,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("B Button!");
         }
-        if ((Input.GetButtonDown("1P_XBtn") || Input.GetKeyDown(KeyCode.Space)) && ammo == 3)
+        if ((Input.GetButtonDown("1P_XBtn") || Input.GetKeyDown(KeyCode.Space)) && ammo == 3 && charState == 0)
         {
             GameObject clone = Instantiate(bullet);
             clone.GetComponent<Bullet>().Init(transform.position, transform.TransformDirection(Vector3.forward));

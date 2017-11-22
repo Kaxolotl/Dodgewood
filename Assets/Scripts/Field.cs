@@ -22,7 +22,7 @@ public class Field : MonoBehaviour
         for (int i = 0; i < FIELDAMMOMAX; i++)
         {
             GameObject clone = Instantiate(ammo);
-            clone.transform.position = gameObject.transform.position;
+            clone.transform.parent = gameObject.transform;
             ammos.Add(clone);
             clone.SetActive(false);
         }
