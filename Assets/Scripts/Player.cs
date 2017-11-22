@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum CHAR_STATE { IDLE = 0, RUN, }
 
@@ -70,6 +71,10 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Ammo")
         {
             ammo++;
+        }
+        else if (other.gameObject.tag == "Bullet")
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
