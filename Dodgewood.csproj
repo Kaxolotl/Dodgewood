@@ -229,6 +229,8 @@
   <ItemGroup>
     <None Include="Assets\Packages\SimpleAirport\Changelog.txt" />
     <None Include="Assets\Packages\SimpleApocalypse\_Materials\UnlitVertexColour_Alpha.shader" />
+    <None Include="Assets\Packages\SimpleMilitary\Materials\UnlitVertexColour_Alpha.shader" />
+    <None Include="Assets\Packages\SimpleMilitary\ReadMe.txt" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Readme.txt" />
     <None Include="Assets\Standard Assets\Effects\Projectors\Guidelines.txt" />
