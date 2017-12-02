@@ -20,7 +20,7 @@ public class IntroManager : MonoBehaviour {
 
     const int IntroButtonMax = 4;
     const int CharButtonMax = 4;
-    const int MapButtonMax = 4;
+    const int MapButtonMax = 6;
 
     enum Mode { single = 0, multi = 1 }
     enum Character { matilda = 0, captain = 1, navi = 2, terminator = 3 }
