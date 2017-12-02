@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Intro.unity
-=======
-- path: Assets/Scenes/Port.unity
->>>>>>> 07268773f4f6cd8674428a2ebc9c02c27d19fa33
+- path: Assets/Scenes/Map/Dungeon.unity
   isLoaded: 1
   isActive: 1
