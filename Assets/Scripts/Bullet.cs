@@ -27,6 +27,7 @@ public class Bullet : MonoBehaviour
 	{
 		transform.position += moveDir * speed * Time.deltaTime;
 	}
+
 	void OnTriggerEnter(Collider col)
 	{
 		if ( col.name.Equals("Wall") )
