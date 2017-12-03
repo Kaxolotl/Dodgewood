@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Map/Apocalypse.unity
+- path: Assets/Scenes/Map/Port.unity
   isLoaded: 1
   isActive: 1
