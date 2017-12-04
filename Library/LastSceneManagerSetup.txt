@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Map/Militery.unity
+- path: Assets/Scenes/SelectMap.unity
   isLoaded: 1
   isActive: 1
