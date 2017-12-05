@@ -61,8 +61,9 @@ public class Player : MonoBehaviour
 
 	void Update()
     {
-        UserInputs();
-        
+        UserInputs_1P();
+        UserInputs_2P();
+
         Movement();
     }
 
@@ -101,10 +102,11 @@ public class Player : MonoBehaviour
             animator.SetBool("isRun", false); // 트리거 사용하거나 기본상태 설정해야겟
         }
     }
-    
 
-    void UserInputs()
+
+    void UserInputs_1P()
     {
+
         if (Input.GetButtonDown("1P_ABtn"))
         {
             Debug.Log("A Button!");
@@ -171,6 +173,79 @@ public class Player : MonoBehaviour
             Debug.Log("Up D-PAD Button!");
         }
         if (Input.GetAxis("1P_VerticalDPad") < 0)
+        {
+            Debug.Log("Down D-PAD Button!");
+        }
+    }
+
+    void UserInputs_2P()
+    {
+
+        if (Input.GetButtonDown("2P_ABtn"))
+        {
+            Debug.Log("A Button!");
+        }
+        if (Input.GetButtonDown("2P_BBtn"))
+        {
+            Debug.Log("B Button!");
+        }
+        if ((Input.GetButtonDown("2P_XBtn") || Input.GetKeyDown(KeyCode.Space)) && ammo == 3 && charState == 0)
+        {
+            GameObject clone = Instantiate(bullet);
+            clone.GetComponent<Bullet>().Init(transform.position, transform.TransformDirection(Vector3.forward));
+            ammo -= 3;
+        }
+        if (Input.GetButtonDown("2P_YBtn"))
+        {
+            Debug.Log("Y Button!");
+        }
+        if (Input.GetButtonDown("2P_LBmp") || Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            ammo++;
+            Debug.Log("총알 획득!");
+        }
+        if (Input.GetButtonDown("2P_RBmp"))
+        {
+            Debug.Log("회피!");
+        }
+        if (Input.GetButtonDown("2P_SelectBtn"))
+        {
+            Debug.Log("Back Button!");
+        }
+        if (Input.GetButtonDown("2P_StartBtn"))
+        {
+            Debug.Log("Start Button!");
+        }
+        if (Input.GetButtonDown("2P_LTmbStkBtn"))
+        {
+            Debug.Log("Left Thumbstick Button!");
+        }
+        if (Input.GetButtonDown("2P_RTmbStkBtn"))
+        {
+            Debug.Log("Right Thumbstick Button!");
+        }
+
+        if (Input.GetAxis("2P_Triggers") > 0.001)
+        {
+            Debug.Log("Right Trigger!");
+        }
+        if (Input.GetAxis("2P_Triggers") < 0)
+        {
+            Debug.Log("Left Trigger!");
+        }
+        if (Input.GetAxis("2P_HorizontalDPad") > 0.001)
+        {
+            Debug.Log("Right D-PAD Button!");
+        }
+        if (Input.GetAxis("2P_HorizontalDPad") < 0)
+        {
+            Debug.Log("Left D-PAD Button!");
+        }
+        if (Input.GetAxis("2P_VerticalDPad") > 0.001)
+        {
+            Debug.Log("Up D-PAD Button!");
+        }
+        if (Input.GetAxis("2P_VerticalDPad") < 0)
         {
             Debug.Log("Down D-PAD Button!");
         }

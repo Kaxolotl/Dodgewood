@@ -38,13 +38,13 @@ public class IntroManager : MonoBehaviour {
     private void Start()
     {
         SelectButtonByScene(SceneManager.GetActiveScene().buildIndex);
-        SelectButton_1(selectedButton_1);
     }
 
     private void Update()
     {
         UserInputs_1();
-        UserInputs_2();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            UserInputs_2();
         ButtonEffect();
     }
 
@@ -62,7 +62,6 @@ public class IntroManager : MonoBehaviour {
                 if (selectedButton_1 == thisSceneButtonMax)
                     selectedButton_1--;
 
-                SelectButton_1(selectedButton_1);
                 StartCoroutine(ButtonSelectDelay());
             }
         }
@@ -77,7 +76,6 @@ public class IntroManager : MonoBehaviour {
                 if (selectedButton_1 < 0)
                     selectedButton_1++;
 
-                SelectButton_1(selectedButton_1);
                 StartCoroutine(ButtonSelectDelay());
             }
         }
@@ -170,7 +168,7 @@ public class IntroManager : MonoBehaviour {
     
     void UserInputs_2()
     {
-        if (Input.GetAxisRaw("Vertical") == 1 || (Input.GetAxisRaw("1P_Triggers") == 1) || (Input.GetAxisRaw("1P_HorizontalDPad") == 1))
+        if (Input.GetAxisRaw("Vertical") == 1 || (Input.GetAxisRaw("2P_Triggers") == 1) || (Input.GetAxisRaw("2P_HorizontalDPad") == 1))
         {
             if (axisInUse_2 == false)
             {
@@ -181,11 +179,10 @@ public class IntroManager : MonoBehaviour {
                 if (selectedButton_2 == thisSceneButtonMax)
                     selectedButton_2--;
 
-                SelectButton_2(selectedButton_2);
                 StartCoroutine(ButtonSelectDelay2());
             }
         }
-        else if (Input.GetAxisRaw("Vertical") == -1 || (Input.GetAxisRaw("1P_Triggers") == -1) || (Input.GetAxisRaw("1P_HorizontalDPad") == -1))
+        else if (Input.GetAxisRaw("Vertical") == -1 || (Input.GetAxisRaw("2P_Triggers") == -1) || (Input.GetAxisRaw("2P_HorizontalDPad") == -1))
         {
             if (axisInUse_2 == false)
             {
@@ -196,7 +193,6 @@ public class IntroManager : MonoBehaviour {
                 if (selectedButton_2 < 0)
                     selectedButton_2++;
 
-                SelectButton_2(selectedButton_2);
                 StartCoroutine(ButtonSelectDelay2());
             }
         }
@@ -249,35 +245,12 @@ public class IntroManager : MonoBehaviour {
             {
                 buttonList[i].color = Color.red;
             }
-            if (i == selectedButton_2)
+            if (i == selectedButton_2 && SceneManager.GetActiveScene().buildIndex == 1)
             {
                 buttonList[i].color = Color.blue;
             }
         }
     }
-
-    void SelectButton_1(int selectedButtonNumber)
-    {
-        return;
-
-        for (int i = 0; i < thisSceneButtonMax; i++)
-        {
-            buttonList[i].color = Color.white;
-        }
-        buttonList[selectedButtonNumber].color = Color.red;
-    }
-
-    void SelectButton_2(int selectedButtonNumber)
-    {
-        return;
-
-        for (int i = 0; i < thisSceneButtonMax; i++)
-        {
-            buttonList[i].color = Color.white;
-        }
-        buttonList[selectedButtonNumber].color = Color.blue;
-    }
-
 
     IEnumerator ButtonSelectDelay()
     {
