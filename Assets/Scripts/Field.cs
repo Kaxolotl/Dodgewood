@@ -51,7 +51,7 @@ public class Field : MonoBehaviour
         for (int i = 0; i < FIELDAMMOMAX; i++)
         {
             GameObject clone = Instantiate(ammo);
-            clone.transform.parent = gameObject.transform;
+            clone.transform.parent = gameObject.transform.parent.transform;
             ammos.Add(clone);
             clone.SetActive(false);
         }
@@ -67,7 +67,7 @@ public class Field : MonoBehaviour
                 float x = Random.Range(-fieldSize.x * 0.5f + fieldPos.x + 2.0f, fieldSize.x * 0.5f + fieldPos.x - 2.0f);
                 float z = Random.Range(-fieldSize.z * 0.5f + fieldPos.z + 2.0f, fieldSize.z * 0.5f + fieldPos.z - 2.0f);
 
-                ammos[i].transform.position = new Vector3(x, 0.5f, z);
+                ammos[i].transform.position = new Vector3(x, 1.5f, z);
                 ammos[i].SetActive(true);
                 return;
             }

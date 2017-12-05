@@ -13,10 +13,10 @@ public class Ammo : MonoBehaviour {
         field = transform.parent.GetComponent<Field>();
     }
 
-    /* private void Update()
+     private void Update()
     {
         transform.Rotate(Vector3.up * Time.deltaTime*rotateSpeed);
-    } */
+    } 
 
     private void OnTriggerEnter(Collider other)
     {
