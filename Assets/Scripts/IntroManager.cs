@@ -24,7 +24,7 @@ public class IntroManager : MonoBehaviour {
 
     enum Mode { single = 0, multi = 1 }
     enum Character { matilda = 0, captain = 1, navi = 2, terminator = 3 }
-    enum Map { apocalypse = 0, city = 1, militery = 2, port = 3 }
+    enum Map { apocalypse = 0, city = 1, dungeon =2, militery = 3, port = 4, space = 5}
 
     private bool axisInUse_1 = false;
     private bool axisInUse_2 = false;
@@ -152,13 +152,23 @@ public class IntroManager : MonoBehaviour {
                         }
                         if (selectedButton_1 == 2)
                         {
-                            GameManager.Instance.map = (int)Map.militery;
+                            GameManager.Instance.map = (int)Map.dungeon;
                             SceneManager.LoadScene(5);
                         }
                         if (selectedButton_1 == 3)
                         {
-                            GameManager.Instance.map = (int)Map.port;
+                            GameManager.Instance.map = (int)Map.militery;
                             SceneManager.LoadScene(6);
+                        }
+                        if (selectedButton_1 == 4)
+                        {
+                            GameManager.Instance.map = (int)Map.port;
+                            SceneManager.LoadScene(7);
+                        }
+                        if (selectedButton_1 == 5)
+                        {
+                            GameManager.Instance.map = (int)Map.space;
+                            SceneManager.LoadScene(8);
                         }
                     }
                     break;

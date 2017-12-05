@@ -4,14 +4,37 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
+    public GameManager _gameManager;
+    public GameManager GameManager
+    {
+        get
+        {
+            if (_gameManager == null)
+                _gameManager = FindObjectOfType<GameManager>();
+
+            return _gameManager;
+        }
+    }
+
     const int FIELDAMMOMAX = 10;
 
-	public	Vector3	fieldPos;
+    enum Character {
+        matilda     = 0,
+        captain     = 1,
+        navi        = 2,
+        terminator  = 3 }
+
+    public	Vector3	fieldPos;
 	public	Vector3	fieldSize;
 	public	GameObject	ammo;
 	public	List<GameObject>	ammos;
 
-	void Awake()
+    public GameObject matilda;
+    public GameObject captain;
+    public GameObject navi;
+    public GameObject terminator;
+
+    void Awake()
 	{
         CreateAmmo();
         InvokeRepeating("SpawnAmmo", 0, 2f);
@@ -44,5 +67,39 @@ public class Field : MonoBehaviour
             }
         }
 	}
+
+    void SpawnPlayer()
+    {
+        float x = Random.Range(-fieldSize.x * 0.5f + fieldPos.x + 2.0f, fieldSize.x * 0.5f + fieldPos.x - 2.0f);
+        float z = Random.Range(-fieldSize.z * 0.5f + fieldPos.z + 2.0f, fieldSize.z * 0.5f + fieldPos.z - 2.0f);
+
+        GameObject player_1 = Instantiate(SelectCharacter(GameManager.Instance.player_1));
+        player_1.transform.parent = gameObject.transform;
+        player_1.transform.position = new Vector3(x, 0.5f, z);
+    }
+
+    GameObject SelectCharacter(int charNum)
+    {
+        if (charNum == 0)
+        {
+            Debug.Log("M");
+            return matilda;
+        }
+        else if (charNum == 1)
+        {
+            Debug.Log("C");
+            return captain;
+        }
+        else if (charNum == 2)
+        {
+            Debug.Log("N");
+            return navi;
+        }
+        else
+        {
+            Debug.Log("T");
+            return terminator;
+        }
+    }
 }
 
