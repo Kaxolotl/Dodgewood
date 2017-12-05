@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4425064132088782}
   - component: {fileID: 33764401913511290}
-  - component: {fileID: 65896928745133812}
   - component: {fileID: 23960057640963870}
   - component: {fileID: 114753674417566254}
+  - component: {fileID: 65896928745133812}
   m_Layer: 0
   m_Name: Ammo
   m_TagString: Ammo
@@ -107,3 +107,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d52872d7c29df419b256d1d8ff2751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  field: {fileID: 0}
+  rotateSpeed: 0

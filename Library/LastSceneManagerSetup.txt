@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Intro.unity
+=======
+- path: Assets/Scenes/Map/Space.unity
+>>>>>>> 52132a1f0ae8c2df4f250d10d31ed272c3abe642
   isLoaded: 1
   isActive: 1
