@@ -35,8 +35,14 @@ public class Field : MonoBehaviour
     public GameObject terminator;
 
     void Awake()
-	{
+    {
+        matilda = Resources.Load<GameObject>("matilda");
+        captain = Resources.Load<GameObject>("matilda");
+        navi = Resources.Load<GameObject>("matilda");
+        terminator = Resources.Load<GameObject>("matilda");
+
         CreateAmmo();
+        SpawnPlayer();
         InvokeRepeating("SpawnAmmo", 0, 2f);
 	}
 
@@ -74,8 +80,11 @@ public class Field : MonoBehaviour
         float z = Random.Range(-fieldSize.z * 0.5f + fieldPos.z + 2.0f, fieldSize.z * 0.5f + fieldPos.z - 2.0f);
 
         GameObject player_1 = Instantiate(SelectCharacter(GameManager.Instance.player_1));
-        player_1.transform.parent = gameObject.transform;
-        player_1.transform.position = new Vector3(x, 0.5f, z);
+        player_1.transform.parent = gameObject.transform.parent.transform;
+        if (GameManager.Instance.gameMode == 0)
+            player_1.transform.position = new Vector3(0,0,0);
+        else
+            player_1.transform.position = new Vector3(x, 0.5f, z);
     }
 
     GameObject SelectCharacter(int charNum)

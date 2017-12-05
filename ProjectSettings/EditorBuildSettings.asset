@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectCharacter.unity
     guid: afcccca59b730da4fba2d9f4f12600ee
   - enabled: 0
-    path: Assets/Scenes/City.unity
-    guid: 69eadf5593d93c4429aca2c724f1fce8
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/SelectMap.unity
     guid: 7ede6989e84a5bf4bb5f12223b2d3b7f
@@ -24,8 +24,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Map/City.unity
     guid: caed7ac3a44c4c248bf950d73094198f
   - enabled: 1
+    path: Assets/Scenes/Map/Dungeon.unity
+    guid: f59ca1c01d02dc64a9f1f0899b5db9ff
+  - enabled: 1
     path: Assets/Scenes/Map/Militery.unity
     guid: 9bf593a56151f5b4bb76dd2bb56bc2ef
   - enabled: 1
     path: Assets/Scenes/Map/Port.unity
     guid: 2bfb428010410dc439aa86a58874a695
+  - enabled: 1
+    path: Assets/Scenes/Map/Space.unity
+    guid: 58560954d556d7a4685816b2ef1a7dc7
