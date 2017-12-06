@@ -76,15 +76,31 @@ public class Field : MonoBehaviour
 
     void SpawnPlayer()
     {
-        float x = Random.Range(-fieldSize.x * 0.5f + fieldPos.x + 2.0f, fieldSize.x * 0.5f + fieldPos.x - 2.0f);
-        float z = Random.Range(-fieldSize.z * 0.5f + fieldPos.z + 2.0f, fieldSize.z * 0.5f + fieldPos.z - 2.0f);
-
-        GameObject player_1 = Instantiate(SelectCharacter(GameManager.Instance.player_1));
-        player_1.transform.parent = gameObject.transform.parent.transform;
         if (GameManager.Instance.gameMode == 0)
-            player_1.transform.position = new Vector3(0,0,0);
+        {
+            GameObject player_1 = Instantiate(SelectCharacter(GameManager.Instance.player_1));
+            player_1.transform.parent = gameObject.transform.parent.transform;
+            player_1.transform.position = new Vector3(0, 0, 0);
+        }
         else
-            player_1.transform.position = new Vector3(x, 0.5f, z);
+        {
+            float x = Random.Range(-fieldSize.x * 0.5f + fieldPos.x + 2.0f, fieldSize.x * 0.5f + fieldPos.x - 2.0f);
+            float z = Random.Range(-fieldSize.z * 0.5f + fieldPos.z + 2.0f, fieldSize.z * 0.5f + fieldPos.z - 2.0f);
+
+            GameObject player = Instantiate(SelectCharacter(GameManager.Instance.player_1));
+            player.transform.parent = gameObject.transform.parent.transform;
+            player.transform.position = new Vector3(x, 0.5f, z);
+
+            GameManager.Instance.nowPlayer = 2;
+
+            float x2 = Random.Range(-fieldSize.x * 0.5f + fieldPos.x + 2.0f, fieldSize.x * 0.5f + fieldPos.x - 2.0f);
+            float z2 = Random.Range(-fieldSize.z * 0.5f + fieldPos.z + 2.0f, fieldSize.z * 0.5f + fieldPos.z - 2.0f);
+
+            GameObject player2 = Instantiate(SelectCharacter(GameManager.Instance.player_2));
+            player.transform.parent = gameObject.transform.parent.transform;
+            player.transform.position = new Vector3(x2, 0.5f, z2);
+
+        }
     }
 
     GameObject SelectCharacter(int charNum)

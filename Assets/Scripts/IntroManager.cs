@@ -29,6 +29,8 @@ public class IntroManager : MonoBehaviour {
     private bool axisInUse_1 = false;
     private bool axisInUse_2 = false;
 
+    bool firstPlayer = true;
+
     int selectedButton_1 = 0;
     int selectedButton_2 = 1;
     int thisSceneButtonMax = 0;
@@ -131,19 +133,61 @@ public class IntroManager : MonoBehaviour {
                             SceneManager.LoadScene(2);
                         }
                     }
+                    if (GameManager.Instance.gameMode == (int)Mode.multi)
+                    {
+                        if (selectedButton_1 == 0)
+                        {
+                            if (firstPlayer)
+                            {
+                                GameManager.Instance.player_1 = (int)Character.matilda;
+                                firstPlayer = false;
+                                break;
+                            }
+                            GameManager.Instance.player_2 = (int)Character.matilda;
+                            SceneManager.LoadScene(2);
+                        }
+                        if (selectedButton_1 == 1)
+                        {
+                            if (firstPlayer)
+                            {
+                                GameManager.Instance.player_1 = (int)Character.captain;
+                                firstPlayer = false;
+                                break;
+                            }
+                            GameManager.Instance.player_2 = (int)Character.captain;
+                            SceneManager.LoadScene(2);
+                        }
+                        if (selectedButton_1 == 2)
+                        {
+                            if (firstPlayer)
+                            {
+                                GameManager.Instance.player_1 = (int)Character.navi;
+                                firstPlayer = false;
+                                break;
+                            }
+                            GameManager.Instance.player_2 = (int)Character.navi;
+                            SceneManager.LoadScene(2);
+                        }
+                        if (selectedButton_1 == 3)
+                        {
+                            if (firstPlayer)
+                            {
+                                GameManager.Instance.player_1 = (int)Character.terminator;
+                                firstPlayer = false;
+                                break;
+                            }
+                            GameManager.Instance.player_2 = (int)Character.terminator;
+                            SceneManager.LoadScene(2);
+                        }
+                    }
                     break;
                     
                     case 2: //MapSelect씬일 때
-
-                    if (GameManager.Instance.gameMode == (int)Mode.single)
-                    {
+                    
                         if (selectedButton_1 == 0)
                         {
                             GameManager.Instance.map = (int)Map.apocalypse;
                             SceneManager.LoadScene(3);
-                            Debug.Log(GameManager.Instance.gameMode);
-                            Debug.Log(GameManager.Instance.player_1);
-                            Debug.Log(GameManager.Instance.map);
                         }
                         if (selectedButton_1 == 1)
                         {
@@ -170,7 +214,6 @@ public class IntroManager : MonoBehaviour {
                             GameManager.Instance.map = (int)Map.space;
                             SceneManager.LoadScene(8);
                         }
-                    }
                     break;
             }
         }
@@ -255,7 +298,7 @@ public class IntroManager : MonoBehaviour {
             {
                 buttonList[i].color = Color.red;
             }
-            if (i == selectedButton_2 && SceneManager.GetActiveScene().buildIndex == 1)
+            if (i == selectedButton_1 && !firstPlayer && SceneManager.GetActiveScene().buildIndex == 1)
             {
                 buttonList[i].color = Color.blue;
             }

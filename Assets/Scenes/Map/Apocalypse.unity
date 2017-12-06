@@ -646,7 +646,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 213190980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 300.5, y: 262.5, z: 0}
+  m_LocalPosition: {x: 376, y: 211.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1397953534}
@@ -1603,7 +1603,7 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   fieldPos: {x: 0, y: 0, z: -2}
   fieldSize: {x: 74, y: 0, z: 46}
-  ammo: {fileID: 1942767193810386, guid: 5eb988bb60bb796469ef5d763fbdeb01, type: 2}
+  ammo: {fileID: 1339200575780004, guid: 0d992e476b6a583488155f55c2ffb866, type: 2}
   ammos: []
   matilda: {fileID: 1654420437124410, guid: e340cbd77ccc126499a2383bab455d5f, type: 2}
   captain: {fileID: 1654420437124410, guid: e340cbd77ccc126499a2383bab455d5f, type: 2}

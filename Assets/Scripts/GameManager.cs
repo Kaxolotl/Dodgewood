@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public int player_2 = 0;
     public int map = 0;
 
+    public int nowPlayer = 1;
+
     private void OnEnable()
     {
         DontDestroyOnLoad(this);
