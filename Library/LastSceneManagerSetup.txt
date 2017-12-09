@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Map/City.unity
+=======
+- path: Assets/Scenes/Intro.unity
+>>>>>>> 686b982974d142d8b8c26705c75c861805f86254
   isLoaded: 1
   isActive: 1
