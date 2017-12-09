@@ -94,18 +94,21 @@ public class IntroManager : MonoBehaviour {
                         SceneManager.LoadScene(1);
                         Debug.Log(GameManager.Instance.gameMode);
                     }
-                    if (selectedButton_1 == 1)//Multi
+                    else if (selectedButton_1 == 1)//Multi
                     {
                         GameManager.Instance.gameMode = (int)Mode.multi;
                         //2P 활성화
                         SceneManager.LoadScene(1);
                     }
-                    if (selectedButton_1 == 2)//Ranking
+                    else if (selectedButton_1 == 2)//Ranking
                     {
                         //랭킹씬으로
                     } 
                     else
+                    {
+                        Debug.Log("ㅁㄴ암ㄴ암ㅇ나ㅣㅓㅇㄴㅁ");
                         Application.Quit();
+                    }
                     break;
 
                 case 1: //CharacterSelect씬일 때
