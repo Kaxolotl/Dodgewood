@@ -61,11 +61,11 @@ public class Player : MonoBehaviour
         if (GameManager.Instance.nowPlayer == 2)
             playerNum = 2;
 
-        Debug.Log(playerNum);
+        Debug.Log(playerNum + "인 게임");
 
         rigid = GetComponent<Rigidbody>();
         speed = 20.0f;
-		ammo = AMMOMAX;
+		ammo = 0;
         isWall = false;
         animator = GetComponent<Animator>();
         charState = CHAR_STATE.IDLE;
@@ -104,10 +104,12 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Ammo")
         {
             ammo++;
+            UIManager.Instance.UIUpdate();
         }
         else if (other.gameObject.tag == "Bullet" && !_Dashing)
         {
             GameManager.Instance.nowPlayer = 1;
+            GameManager.Instance.GameOver();
             SceneManager.LoadScene(0);
         }
     }
@@ -161,6 +163,7 @@ public class Player : MonoBehaviour
         GameObject clone = Instantiate(bullet);
         clone.GetComponent<Bullet>().Init(transform.position, transform.TransformDirection(Vector3.forward));
         ammo -= 3;
+        UIManager.Instance.UIUpdate();
         _canMove = true;
         _canShoot = true;
         Debug.Log("shoot");

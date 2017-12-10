@@ -20,7 +20,7 @@ public class Ammo : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "player_1" || other.gameObject.tag == "player_2")
         {
             gameObject.SetActive(false);
         }

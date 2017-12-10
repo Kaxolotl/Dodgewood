@@ -16,6 +16,7 @@ public class Field : MonoBehaviour
         }
     }
 
+
     const int FIELDAMMOMAX = 10;
 
     enum Character {
@@ -36,15 +37,19 @@ public class Field : MonoBehaviour
 
     void Awake()
     {
+
         matilda = Resources.Load<GameObject>("matilda");
         captain = Resources.Load<GameObject>("matilda");
         navi = Resources.Load<GameObject>("matilda");
         terminator = Resources.Load<GameObject>("matilda");
 
+
         CreateAmmo();
         SpawnPlayer();
-        InvokeRepeating("SpawnAmmo", 0, 2f);
-	}
+        InvokeRepeating("SpawnAmmo", 3, 2f);
+
+        UIManager.Instance.UIInit();
+    }
 
     void CreateAmmo()
     {
@@ -76,9 +81,11 @@ public class Field : MonoBehaviour
 
     void SpawnPlayer()
     {
-        if (GameManager.Instance.gameMode == 0)
+        if (GameManager.Instance.gameMode == 1)
         {
             GameObject player_1 = Instantiate(SelectCharacter(GameManager.Instance.player_1));
+            player_1.name = "player_1";
+            player_1.tag = "player_1";
             player_1.transform.parent = gameObject.transform.parent.transform;
             player_1.transform.position = new Vector3(0, 0, 0);
         }
@@ -87,19 +94,24 @@ public class Field : MonoBehaviour
             float x = Random.Range(-fieldSize.x * 0.5f + fieldPos.x + 2.0f, fieldSize.x * 0.5f + fieldPos.x - 2.0f);
             float z = Random.Range(-fieldSize.z * 0.5f + fieldPos.z + 2.0f, fieldSize.z * 0.5f + fieldPos.z - 2.0f);
 
-            GameObject player = Instantiate(SelectCharacter(GameManager.Instance.player_1));
-            player.transform.parent = gameObject.transform.parent.transform;
-            player.transform.position = new Vector3(x, 0.5f, z);
+            GameObject player_1 = Instantiate(SelectCharacter(GameManager.Instance.player_1));
+            player_1.name = "player_1";
+            player_1.tag = "player_1";
+            player_1.transform.parent = gameObject.transform.parent.transform;
+            player_1.transform.position = new Vector3(x, 0.5f, z);
+
+
 
             GameManager.Instance.nowPlayer = 2;
 
             float x2 = Random.Range(-fieldSize.x * 0.5f + fieldPos.x + 2.0f, fieldSize.x * 0.5f + fieldPos.x - 2.0f);
             float z2 = Random.Range(-fieldSize.z * 0.5f + fieldPos.z + 2.0f, fieldSize.z * 0.5f + fieldPos.z - 2.0f);
 
-            GameObject player2 = Instantiate(SelectCharacter(GameManager.Instance.player_2));
-            player.transform.parent = gameObject.transform.parent.transform;
-            player.transform.position = new Vector3(x2, 0.5f, z2);
-
+            GameObject player_2 = Instantiate(SelectCharacter(GameManager.Instance.player_2));
+            player_2.name = "player_2";
+            player_2.tag = "player_2";
+            player_2.transform.parent = gameObject.transform.parent.transform;
+            player_2.transform.position = new Vector3(x2, 0.5f, z2);
         }
     }
 

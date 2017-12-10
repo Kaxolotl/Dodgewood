@@ -22,9 +22,9 @@ public class IntroManager : MonoBehaviour {
     const int CharButtonMax = 4;
     const int MapButtonMax = 6;
 
-    enum Mode { single = 0, multi = 1 }
-    enum Character { matilda = 0, captain = 1, navi = 2, terminator = 3 }
-    enum Map { apocalypse = 0, city = 1, dungeon =2, militery = 3, port = 4, space = 5}
+    enum Mode { nothing = 0, single, multi}
+    enum Character { matilda = 0, captain, navi, terminator}
+    enum Map { apocalypse = 0, city, dungeon, militery, port, space}
 
     private bool axisInUse_1 = false;
     private bool axisInUse_2 = false;
@@ -92,7 +92,6 @@ public class IntroManager : MonoBehaviour {
                     {
                         GameManager.Instance.gameMode = (int)Mode.single;
                         SceneManager.LoadScene(1);
-                        Debug.Log(GameManager.Instance.gameMode);
                     }
                     else if (selectedButton_1 == 1)//Multi
                     {
@@ -106,7 +105,6 @@ public class IntroManager : MonoBehaviour {
                     } 
                     else
                     {
-                        Debug.Log("ㅁㄴ암ㄴ암ㅇ나ㅣㅓㅇㄴㅁ");
                         Application.Quit();
                     }
                     break;

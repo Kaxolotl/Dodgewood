@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<UIManager>();
+                _instance = new UIManager();
                 if (_instance == null)
                 {
                     Debug.LogWarning(string.Format("{0} 인스턴스를 찾을 수 없습니다.", typeof(UIManager).ToString()));
@@ -34,12 +34,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public GameObject player1UI;
+    public Player player1;
     public Image player1_portrait;
     public Image player1_ammo1;
     public Image player1_ammo2;
     public Image player1_ammo3;
     public Image player1_dash;
 
+    public GameObject player2UI;
+    public Player player2;
     public Image player2_portrait;
     public Image player2_ammo1;
     public Image player2_ammo2;
@@ -49,7 +53,16 @@ public class UIManager : MonoBehaviour
 
 
     private void Awake()
-    {
+    { 
+        if (Instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        _instance = this;
+        DontDestroyOnLoad(this.gameObject);
+
         player1_portrait = transform.Find("Canvas/PlayerUI/Portrait").GetComponent<Image>();
         player1_ammo1 = transform.Find("Canvas/PlayerUI/Ammo1").GetComponent<Image>();
         player1_ammo2 = transform.Find("Canvas/PlayerUI/Ammo2").GetComponent<Image>();
@@ -61,6 +74,87 @@ public class UIManager : MonoBehaviour
         player2_ammo2 = transform.Find("Canvas/Player2UI/Ammo2").GetComponent<Image>();
         player2_ammo3 = transform.Find("Canvas/Player2UI/Ammo3").GetComponent<Image>();
         player2_dash = transform.Find("Canvas/Player2UI/Dash").GetComponent<Image>();
+    }
+    
+    public void UIInit()
+    {
+        player1_portrait.sprite = Resources.Load<Sprite>("portrait" + GameManager.Instance.player_1);
+        player1 = GameObject.FindGameObjectWithTag("player_1").GetComponent<Player>();
+        player2UI.gameObject.SetActive(false);
+
+        if (GameManager.Instance.gameMode == 2)
+        {
+            player2_portrait.sprite = Resources.Load<Sprite>("portrait" + GameManager.Instance.player_2);
+            player2 = GameObject.FindGameObjectWithTag("player_2").GetComponent<Player>();
+            player2UI.gameObject.SetActive(true);
+        }
+
+    }
+
+    public void UIUpdate()
+    {
+        AmmoUpdate(1, player1.ammo);
+        if(GameManager.Instance.gameMode == 2)
+        {
+            Debug.Log(player2.ammo);
+            AmmoUpdate(2, player2.ammo);
+        }
+    }
+
+    void AmmoUpdate(int player, int ammo)
+    {
+        if (player == 1)
+        {
+            switch (ammo)
+            {
+                case 0:
+                    player1_ammo1.gameObject.SetActive(false);
+                    player1_ammo2.gameObject.SetActive(false);
+                    player1_ammo3.gameObject.SetActive(false);
+                    break;
+                case 1:
+                    player1_ammo1.gameObject.SetActive(true);
+                    player1_ammo2.gameObject.SetActive(false);
+                    player1_ammo3.gameObject.SetActive(false);
+                    break;
+                case 2:
+                    player1_ammo1.gameObject.SetActive(true);
+                    player1_ammo2.gameObject.SetActive(true);
+                    player1_ammo3.gameObject.SetActive(false);
+                    break;
+                case 3:
+                    player1_ammo1.gameObject.SetActive(true);
+                    player1_ammo2.gameObject.SetActive(true);
+                    player1_ammo3.gameObject.SetActive(true);
+                    break;
+            }
+        }
+        if (player == 2)
+        {
+            switch (ammo)
+            {
+                case 0:
+                    player2_ammo1.gameObject.SetActive(false);
+                    player2_ammo2.gameObject.SetActive(false);
+                    player2_ammo3.gameObject.SetActive(false);
+                    break;
+                case 1:
+                    player2_ammo1.gameObject.SetActive(true);
+                    player2_ammo2.gameObject.SetActive(false);
+                    player2_ammo3.gameObject.SetActive(false);
+                    break;
+                case 2:
+                    player2_ammo1.gameObject.SetActive(true);
+                    player2_ammo2.gameObject.SetActive(true);
+                    player2_ammo3.gameObject.SetActive(false);
+                    break;
+                case 3:
+                    player2_ammo1.gameObject.SetActive(true);
+                    player2_ammo2.gameObject.SetActive(true);
+                    player2_ammo3.gameObject.SetActive(true);
+                    break;
+            }
+        }
     }
 
     private void OnEnable()

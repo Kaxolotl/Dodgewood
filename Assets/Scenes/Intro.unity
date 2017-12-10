@@ -802,16 +802,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 0}
-  player1_portrait: {fileID: 0}
-  player1_ammo1: {fileID: 0}
-  player1_ammo2: {fileID: 0}
-  player1_ammo3: {fileID: 0}
-  player1_dash: {fileID: 0}
-  player2_portrait: {fileID: 0}
-  player2_ammo1: {fileID: 0}
-  player2_ammo2: {fileID: 0}
-  player2_ammo3: {fileID: 0}
-  player2_dash: {fileID: 0}
+  player1UI: {fileID: 584923366}
+  player1: {fileID: 0}
+  player1_portrait: {fileID: 1997696883}
+  player1_ammo1: {fileID: 515255417}
+  player1_ammo2: {fileID: 1439112745}
+  player1_ammo3: {fileID: 971297976}
+  player1_dash: {fileID: 612171740}
+  player2UI: {fileID: 930364468}
+  player2: {fileID: 0}
+  player2_portrait: {fileID: 479546112}
+  player2_ammo1: {fileID: 670144377}
+  player2_ammo2: {fileID: 1355329156}
+  player2_ammo3: {fileID: 1937439502}
+  player2_dash: {fileID: 578400036}
 --- !u!222 &513078145
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -824,7 +828,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 513078143}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 117.5, y: 345, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -853,7 +857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &515255416
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1137,7 +1141,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 584923366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 40, y: -22.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1997696882}
@@ -1319,7 +1323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &670144376
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1597,7 +1601,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 930364468}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 661.1, y: 0, z: 0}
+  m_LocalPosition: {x: 620.6, y: -22.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 479546111}
@@ -1660,7 +1664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &971297975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1737,7 +1741,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1113662186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 284.5, y: -119, z: 0}
+  m_LocalPosition: {x: 256.5, y: -134.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 357725235}
@@ -1890,7 +1894,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1117678230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 402, y: 226, z: 0}
+  m_LocalPosition: {x: 374, y: 210.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1323542956}
@@ -1937,6 +1941,13 @@ MonoBehaviour:
   player_2: 0
   map: 0
   nowPlayer: 1
+  p1ammo: 0
+  p2ammo: 0
+  firstScore: 0
+  secondScore: 0
+  thirdScore: 0
+  fourthScore: 0
+  fifthScore: 0
 --- !u!4 &1220996989
 Transform:
   m_ObjectHideFlags: 0
@@ -2102,7 +2113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1355329155
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2170,7 +2181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1439112744
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2426,7 +2437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1937439501
 RectTransform:
   m_ObjectHideFlags: 0
