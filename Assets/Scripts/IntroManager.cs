@@ -53,7 +53,7 @@ public class IntroManager : MonoBehaviour {
 
     void UserInputs_1()
     {
-        if (Input.GetAxisRaw("Horizontal") == 1 || (Input.GetAxisRaw("1P_Triggers") == 1) || (Input.GetAxisRaw("1P_HorizontalDPad") == 1))
+        if (Input.GetAxisRaw("Vertical") == -1 || Input.GetAxisRaw("Horizontal") == 1 || (Input.GetAxisRaw("1P_Triggers") == 1) || (Input.GetAxisRaw("1P_HorizontalDPad") == 1) || (Input.GetAxisRaw("1P_VerticalDPad") == -1))
         {
             if (axisInUse_1 == false)
             {
@@ -67,7 +67,7 @@ public class IntroManager : MonoBehaviour {
                 StartCoroutine(ButtonSelectDelay());
             }
         }
-        else if (Input.GetAxisRaw("Horizontal") == -1 || (Input.GetAxisRaw("1P_Triggers") == -1) || (Input.GetAxisRaw("1P_HorizontalDPad") == -1))
+        else if (Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Horizontal") == -1 || (Input.GetAxisRaw("1P_Triggers") == -1) || (Input.GetAxisRaw("1P_HorizontalDPad") == -1) || (Input.GetAxisRaw("1P_VerticalDPad") == 1))
         {
             if (axisInUse_1 == false)
             {
