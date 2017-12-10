@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
     public Image player2_ammo3;
     public Image player2_dash;
 
-
+    public Text score;
 
     private void Awake()
     { 
@@ -80,12 +80,14 @@ public class UIManager : MonoBehaviour
     {
         player1_portrait.sprite = Resources.Load<Sprite>("portrait" + GameManager.Instance.player_1);
         player1 = GameObject.FindGameObjectWithTag("player_1").GetComponent<Player>();
+        score.gameObject.SetActive(true);
         player2UI.gameObject.SetActive(false);
 
         if (GameManager.Instance.gameMode == 2)
         {
             player2_portrait.sprite = Resources.Load<Sprite>("portrait" + GameManager.Instance.player_2);
             player2 = GameObject.FindGameObjectWithTag("player_2").GetComponent<Player>();
+            score.gameObject.SetActive(false);
             player2UI.gameObject.SetActive(true);
         }
 

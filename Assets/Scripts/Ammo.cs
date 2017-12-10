@@ -18,11 +18,4 @@ public class Ammo : MonoBehaviour {
         transform.Rotate(Vector3.up * Time.deltaTime*rotateSpeed);
     } 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "player_1" || other.gameObject.tag == "player_2")
-        {
-            gameObject.SetActive(false);
-        }
-    }
 }

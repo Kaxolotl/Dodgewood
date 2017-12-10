@@ -101,10 +101,11 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Ammo")
+        if (other.gameObject.tag == "Ammo" && ammo < 3)
         {
             ammo++;
             UIManager.Instance.UIUpdate();
+            other.gameObject.SetActive(false);
         }
         else if (other.gameObject.tag == "Bullet" && !_Dashing)
         {
@@ -158,15 +159,17 @@ public class Player : MonoBehaviour
     {
         _canShoot = false;
         _canMove = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.7f);
 
         GameObject clone = Instantiate(bullet);
         clone.GetComponent<Bullet>().Init(transform.position, transform.TransformDirection(Vector3.forward));
         ammo -= 3;
         UIManager.Instance.UIUpdate();
+        Debug.Log("shoot");
+
+        yield return new WaitForSeconds(0.3f);
         _canMove = true;
         _canShoot = true;
-        Debug.Log("shoot");
     }
 
     IEnumerator Dash()
