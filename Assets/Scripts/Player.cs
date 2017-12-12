@@ -76,6 +76,12 @@ public class Player : MonoBehaviour
         _Dashing = false;
     }
 
+    private void Start()
+    {
+
+        UIManager.Instance.UIUpdate();
+    }
+
     bool RayCheck()
     {
         if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, 4f, layerMask))
@@ -159,6 +165,8 @@ public class Player : MonoBehaviour
     {
         _canShoot = false;
         _canMove = false;
+
+        UIManager.Instance.shootscore++;
         yield return new WaitForSeconds(0.7f);
 
         GameObject clone = Instantiate(bullet);

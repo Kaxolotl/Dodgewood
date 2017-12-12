@@ -54,10 +54,48 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        RankingUpdate();
         gameMode = 0;
         player_1 = 0;
         player_2 = 0;
         map = 0;
         nowPlayer = 1;
+
+        UIManager.Instance.score = 0;
+        UIManager.Instance.shootscore = 0;
+    }
+
+    public void RankingUpdate()
+    {
+        if(firstScore< UIManager.Instance.score)
+        {
+            fifthScore = fourthScore;
+            fourthScore = thirdScore;
+            thirdScore = secondScore;
+            secondScore = firstScore;
+            firstScore = UIManager.Instance.score;
+        }
+        else if (secondScore < UIManager.Instance.score)
+        {
+            fifthScore = fourthScore;
+            fourthScore = thirdScore;
+            thirdScore = secondScore;
+            secondScore = UIManager.Instance.score;
+        }
+        else if (thirdScore < UIManager.Instance.score)
+        {
+            fifthScore = fourthScore;
+            fourthScore = thirdScore;
+            thirdScore = UIManager.Instance.score;
+        }
+        else if (fourthScore < UIManager.Instance.score)
+        {
+            fifthScore = fourthScore;
+            fourthScore = UIManager.Instance.score;
+        }
+        else if (fifthScore < UIManager.Instance.score)
+        {
+            fifthScore = UIManager.Instance.score;
+        }
     }
 }

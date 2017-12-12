@@ -37,6 +37,8 @@ public class IntroManager : MonoBehaviour {
 
     List<Image> buttonList;
 
+    public GameObject ranking;
+
     private void Start()
     {
         SelectButtonByScene(SceneManager.GetActiveScene().buildIndex);
@@ -101,7 +103,7 @@ public class IntroManager : MonoBehaviour {
                     }
                     else if (selectedButton_1 == 2)//Ranking
                     {
-                        //랭킹씬으로
+                        ranking.gameObject.SetActive(true);
                     } 
                     else
                     {

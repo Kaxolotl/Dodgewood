@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - player_1
   - player_2
+  - Ranking
   layers:
   - Default
   - TransparentFX

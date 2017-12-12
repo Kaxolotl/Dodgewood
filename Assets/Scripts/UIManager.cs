@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -50,10 +51,21 @@ public class UIManager : MonoBehaviour
     public Image player2_ammo3;
     public Image player2_dash;
 
-    public Text score;
+    public Text scoreUI;
+    public int score;
+    public int shootscore;
+
+    public GameObject ranking;
+    public Text ranking1;
+    public Text ranking2;
+    public Text ranking3;
+    public Text ranking4;
+    public Text ranking5;
 
     private void Awake()
-    { 
+    {
+        InvokeRepeating("ScoreUpdate", 0, 1f);
+
         if (Instance != null)
         {
             Destroy(this.gameObject);
@@ -62,6 +74,8 @@ public class UIManager : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
+
+        shootscore = 0;
 
         player1_portrait = transform.Find("Canvas/PlayerUI/Portrait").GetComponent<Image>();
         player1_ammo1 = transform.Find("Canvas/PlayerUI/Ammo1").GetComponent<Image>();
@@ -80,14 +94,14 @@ public class UIManager : MonoBehaviour
     {
         player1_portrait.sprite = Resources.Load<Sprite>("portrait" + GameManager.Instance.player_1);
         player1 = GameObject.FindGameObjectWithTag("player_1").GetComponent<Player>();
-        score.gameObject.SetActive(true);
+        scoreUI.gameObject.SetActive(true);
         player2UI.gameObject.SetActive(false);
 
         if (GameManager.Instance.gameMode == 2)
         {
             player2_portrait.sprite = Resources.Load<Sprite>("portrait" + GameManager.Instance.player_2);
             player2 = GameObject.FindGameObjectWithTag("player_2").GetComponent<Player>();
-            score.gameObject.SetActive(false);
+            scoreUI.gameObject.SetActive(false);
             player2UI.gameObject.SetActive(true);
         }
 
@@ -95,20 +109,33 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (player1._canDash)
-            player1_dash.gameObject.SetActive(true);
-        else
-            player1_dash.gameObject.SetActive(false);
+        if(GameManager.Instance.gameMode == 1 && SceneManager.GetActiveScene().buildIndex > 2)
+        {
+        scoreUI.text = score.ToString();
+        }
 
-        if (player2._canDash)
-            player2_dash.gameObject.SetActive(true);
-        else
-            player2_dash.gameObject.SetActive(false);
+        if (GameManager.Instance.gameMode != 0 && SceneManager.GetActiveScene().buildIndex > 2)
+        {
+            if (player1._canDash)
+                player1_dash.gameObject.SetActive(true);
+            else
+                player1_dash.gameObject.SetActive(false);
+            if (GameManager.Instance.gameMode == 2)
+            {
+                if (player2._canDash)
+                    player2_dash.gameObject.SetActive(true);
+                else
+                    player2_dash.gameObject.SetActive(false);
+            }
+        }
     }
 
     public void ScoreUpdate()
     {
-
+        if (GameManager.Instance.gameMode != 0)
+        {
+            score += shootscore;
+        }
     }
 
     public void UIUpdate()
