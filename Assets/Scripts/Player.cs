@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     public int playerNum;
     bool _canMove;
     bool _canShoot;
-    bool _canDash;
+    public bool _canDash;
     bool _Dashing;
 
 

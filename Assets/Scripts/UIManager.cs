@@ -93,6 +93,24 @@ public class UIManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (player1._canDash)
+            player1_dash.gameObject.SetActive(true);
+        else
+            player1_dash.gameObject.SetActive(false);
+
+        if (player2._canDash)
+            player2_dash.gameObject.SetActive(true);
+        else
+            player2_dash.gameObject.SetActive(false);
+    }
+
+    public void ScoreUpdate()
+    {
+
+    }
+
     public void UIUpdate()
     {
         AmmoUpdate(1, player1.ammo);
@@ -101,6 +119,16 @@ public class UIManager : MonoBehaviour
             Debug.Log(player2.ammo);
             AmmoUpdate(2, player2.ammo);
         }
+    }
+
+    public void Player1_Dash()
+    {
+        player1_dash.gameObject.SetActive(false);
+    }
+
+    public void Player2_Dash()
+    {
+        player2_dash.gameObject.SetActive(false);
     }
 
     void AmmoUpdate(int player, int ammo)
@@ -130,6 +158,7 @@ public class UIManager : MonoBehaviour
                     player1_ammo3.gameObject.SetActive(true);
                     break;
             }
+
         }
         if (player == 2)
         {
