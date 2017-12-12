@@ -62,6 +62,14 @@ public class UIManager : MonoBehaviour
     public Text ranking4;
     public Text ranking5;
 
+    public AudioSource _audio;
+
+    public AudioClip _dash;
+    public AudioClip _rooting;
+    public AudioClip _select;
+    public AudioClip _shoot;
+    public AudioClip _win;
+
     private void Awake()
     {
         InvokeRepeating("ScoreUpdate", 0, 1f);
@@ -76,6 +84,7 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         shootscore = 0;
+        _audio = GetComponent<AudioSource>();
 
         player1_portrait = transform.Find("Canvas/PlayerUI/Portrait").GetComponent<Image>();
         player1_ammo1 = transform.Find("Canvas/PlayerUI/Ammo1").GetComponent<Image>();
@@ -146,6 +155,27 @@ public class UIManager : MonoBehaviour
             Debug.Log(player2.ammo);
             AmmoUpdate(2, player2.ammo);
         }
+    }
+
+    public void PlayDash()
+    {
+        _audio.PlayOneShot(_dash);
+    }
+    public void PlayRooting()
+    {
+        _audio.PlayOneShot(_rooting);
+    }
+    public void PlaySelect()
+    {
+        _audio.PlayOneShot(_select);
+    }
+    public void PlayShoot()
+    {
+        _audio.PlayOneShot(_shoot);
+    }
+    public void PlayWin()
+    {
+        _audio.PlayOneShot(_win);
     }
 
     public void Player1_Dash()

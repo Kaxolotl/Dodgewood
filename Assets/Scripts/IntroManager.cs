@@ -87,6 +87,7 @@ public class IntroManager : MonoBehaviour {
     
         if ((Input.GetButtonDown("1P_XBtn") || Input.GetKeyDown(KeyCode.Space)))
         {
+            UIManager.Instance.PlaySelect();
             switch (SceneManager.GetActiveScene().buildIndex)
             {
                 case 0: //Intro씬일 때

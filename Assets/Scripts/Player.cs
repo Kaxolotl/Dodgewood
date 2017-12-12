@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     bool _canShoot;
     public bool _canDash;
     bool _Dashing;
+    bool _gameStop;
 
 
     Animator animator;
@@ -74,11 +75,11 @@ public class Player : MonoBehaviour
         _canShoot = true;
         _canDash = true;
         _Dashing = false;
+        _gameStop = false;
     }
 
     private void Start()
     {
-
         UIManager.Instance.UIUpdate();
     }
 
@@ -97,10 +98,12 @@ public class Player : MonoBehaviour
 
 	void Update()
     {
-        if(playerNum == 1)
+        if(playerNum == 1 && !_gameStop)
             UserInputs_1P();
-        if(playerNum ==2)
+        if(playerNum == 2 && !_gameStop)
             UserInputs_2P();
+
+
 
         Movement();
     }
@@ -110,14 +113,19 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Ammo" && ammo < 3)
         {
             ammo++;
+            UIManager.Instance.PlayRooting();
             UIManager.Instance.UIUpdate();
+            if(GameManager.Instance.gameMode == 1)
+                UIManager.Instance.score += 50;
             other.gameObject.SetActive(false);
         }
         else if (other.gameObject.tag == "Bullet" && !_Dashing)
         {
+            UIManager.Instance.PlayWin();
             GameManager.Instance.nowPlayer = 1;
             GameManager.Instance.GameOver();
-            SceneManager.LoadScene(0);
+            GameManager.Instance.gameStop = true;
+            Time.timeScale = 0.01f;
         }
     }
 
@@ -166,8 +174,11 @@ public class Player : MonoBehaviour
         _canShoot = false;
         _canMove = false;
 
+        UIManager.Instance.score += 100;
         UIManager.Instance.shootscore++;
         yield return new WaitForSeconds(0.7f);
+
+        UIManager.Instance.PlayShoot();
 
         GameObject clone = Instantiate(bullet);
         clone.GetComponent<Bullet>().Init(transform.position, transform.TransformDirection(Vector3.forward));
@@ -182,6 +193,7 @@ public class Player : MonoBehaviour
 
     IEnumerator Dash()
     {
+        UIManager.Instance.PlayDash();
         _canDash = false;
         _Dashing = true;
         speed = 50;
@@ -197,6 +209,14 @@ public class Player : MonoBehaviour
 
     void UserInputs_1P()
     {
+        if (GameManager.Instance.gameStop)
+        {
+            Debug.Log("stop");
+            if (Input.GetButtonDown("1P_StartBtn"))
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
 
         if (Input.GetButtonDown("1P_ABtn"))
         {

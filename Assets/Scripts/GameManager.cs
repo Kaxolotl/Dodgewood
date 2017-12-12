@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public bool gameStop = false;
 
     public int gameMode = 0; // 0이면 싱글, 1이면 멀티
     public int player_1 = 0; // 0이면 마틸다 
