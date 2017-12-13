@@ -41,6 +41,7 @@ public class IntroManager : MonoBehaviour {
 
     private void Start()
     {
+        Time.timeScale = 1f;
         SelectButtonByScene(SceneManager.GetActiveScene().buildIndex);
     }
 

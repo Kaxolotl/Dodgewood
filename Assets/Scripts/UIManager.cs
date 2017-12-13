@@ -55,6 +55,12 @@ public class UIManager : MonoBehaviour
     public int score;
     public int shootscore;
 
+    public GameObject result;
+    public Text resultScore;
+
+    public GameObject Win1P;
+    public GameObject Win2P;
+
     public GameObject ranking;
     public Text ranking1;
     public Text ranking2;
@@ -69,6 +75,7 @@ public class UIManager : MonoBehaviour
     public AudioClip _select;
     public AudioClip _shoot;
     public AudioClip _win;
+
 
     private void Awake()
     {
@@ -120,7 +127,8 @@ public class UIManager : MonoBehaviour
     {
         if(GameManager.Instance.gameMode == 1 && SceneManager.GetActiveScene().buildIndex > 2)
         {
-        scoreUI.text = score.ToString();
+            scoreUI.text = score.ToString();
+            resultScore.text = score.ToString();
         }
 
         if (GameManager.Instance.gameMode != 0 && SceneManager.GetActiveScene().buildIndex > 2)

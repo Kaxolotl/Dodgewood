@@ -49,6 +49,8 @@ public class Player : MonoBehaviour
     bool _Dashing;
     bool _gameStop;
 
+    int whoDead;
+
 
     Animator animator;
     CHAR_STATE charState;
@@ -56,8 +58,10 @@ public class Player : MonoBehaviour
     private bool isWall;
 	
 	void Awake()
-	{
-        playerNum = 1;
+    {
+        GameManager.Instance.gameStop = false;
+
+           playerNum = 1;
 
         if (GameManager.Instance.nowPlayer == 2)
             playerNum = 2;
@@ -119,11 +123,28 @@ public class Player : MonoBehaviour
                 UIManager.Instance.score += 50;
             other.gameObject.SetActive(false);
         }
-        else if (other.gameObject.tag == "Bullet" && !_Dashing)
+        else if (other.gameObject.tag == "Bullet" && !_Dashing && GameManager.Instance.gameMode == 1)
         {
             UIManager.Instance.PlayWin();
             GameManager.Instance.nowPlayer = 1;
+            GameOver();
             GameManager.Instance.GameOver();
+            GameManager.Instance.gameStop = true;
+            Time.timeScale = 0.01f;
+        }
+        else if (other.gameObject.tag == "Bullet" && !_Dashing && GameManager.Instance.gameMode == 2)
+        {
+            if (gameObject.name == "player_1")
+            {
+                whoDead = 1;
+            }
+            else if (gameObject.name == "player_2")
+            {
+                whoDead = 2;
+            }
+
+            UIManager.Instance.PlayWin();
+            GameManager.Instance.nowPlayer = 1;
             GameManager.Instance.gameStop = true;
             Time.timeScale = 0.01f;
         }
@@ -210,14 +231,49 @@ public class Player : MonoBehaviour
         _canDash = true;
     }
 
+    void GameOver()
+    {
+        if (GameManager.Instance.gameMode == 1)
+        {
+            UIManager.Instance.result.gameObject.SetActive(true);
+            UIManager.Instance.player1UI.gameObject.SetActive(false);
+            UIManager.Instance.scoreUI.gameObject.SetActive(false);
+        }
+
+        if (GameManager.Instance.gameMode == 2)
+        {
+            if (whoDead == 1)
+            {
+                UIManager.Instance.Win2P.gameObject.SetActive(true);
+                UIManager.Instance.player1UI.gameObject.SetActive(false);
+                UIManager.Instance.player2UI.gameObject.SetActive(false);
+                UIManager.Instance.scoreUI.gameObject.SetActive(false);
+            }
+            if(whoDead == 2)
+            {
+                UIManager.Instance.Win1P.gameObject.SetActive(true);
+                UIManager.Instance.player1UI.gameObject.SetActive(false);
+                UIManager.Instance.player2UI.gameObject.SetActive(false);
+                UIManager.Instance.scoreUI.gameObject.SetActive(false);
+            }
+        }
+
+
+    }
+
 
     void UserInputs_1P()
     {
         if (GameManager.Instance.gameStop)
         {
-            Debug.Log("stop");
             if (Input.GetButtonDown("1P_StartBtn"))
             {
+                UIManager.Instance.result.gameObject.SetActive(false);
+                UIManager.Instance.Win1P.gameObject.SetActive(false);
+                UIManager.Instance.Win2P.gameObject.SetActive(false);
+                UIManager.Instance.player1UI.gameObject.SetActive(true);
+                UIManager.Instance.player2UI.gameObject.SetActive(true);
+                UIManager.Instance.scoreUI.gameObject.SetActive(true);
                 SceneManager.LoadScene(0);
             }
         }

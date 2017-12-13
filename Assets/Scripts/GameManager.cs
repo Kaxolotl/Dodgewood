@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     public int fourthScore = 0;
     public int fifthScore = 0;
 
+    public AudioSource _audio;
+    public AudioClip _BGM;
 
     private void Awake()
     {
@@ -50,10 +52,13 @@ public class GameManager : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
+
+        _audio = GetComponent<AudioSource>();
     }
 
     public void GameOver()
     {
+        StopBGM();
         RankingUpdate();
         gameMode = 0;
         player_1 = 0;
@@ -63,6 +68,15 @@ public class GameManager : MonoBehaviour
 
         UIManager.Instance.score = 0;
         UIManager.Instance.shootscore = 0;
+    }
+
+    public void PlayBGM()
+    {
+        _audio.Play();
+    }
+    public void StopBGM()
+    {
+        _audio.Stop();
     }
 
     public void RankingUpdate()
