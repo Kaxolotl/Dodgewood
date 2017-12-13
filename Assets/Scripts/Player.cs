@@ -228,7 +228,7 @@ public class Player : MonoBehaviour
         animator.SetBool("isDash", false);
         _Dashing = false;
         speed = 20;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(3);
 
         _canDash = true;
     }
