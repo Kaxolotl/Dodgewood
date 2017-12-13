@@ -173,6 +173,7 @@ public class Player : MonoBehaviour
     {
         _canShoot = false;
         _canMove = false;
+        _canDash = false;
 
         UIManager.Instance.score += 100;
         UIManager.Instance.shootscore++;
@@ -189,6 +190,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         _canMove = true;
         _canShoot = true;
+        _canDash = true;
     }
 
     IEnumerator Dash()
@@ -197,11 +199,13 @@ public class Player : MonoBehaviour
         _canDash = false;
         _Dashing = true;
         speed = 50;
+        animator.SetBool("isDash", true);
         yield return new WaitForSeconds(0.2f);
-        
+
+        animator.SetBool("isDash", false);
         _Dashing = false;
         speed = 20;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(0.1f);
 
         _canDash = true;
     }
@@ -220,31 +224,29 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("1P_ABtn"))
         {
-            Debug.Log("A Button!");
+            
         }
         if (Input.GetButtonDown("1P_BBtn"))
         {
-            Debug.Log("B Button!");
+            
         }
-        if ((Input.GetButtonDown("1P_XBtn") || Input.GetKeyDown(KeyCode.Space)) && _canShoot && ammo == 3)
+        if ((Input.GetButtonDown("1P_XBtn")) && _canShoot && ammo == 3)
         {
             StartCoroutine(Shoot());
         }
-        if (Input.GetButtonDown("1P_YBtn") || Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetButtonDown("1P_YBtn"))
         {
-            if (!_canDash)
-                return;
-            StartCoroutine(Dash());
-            Debug.Log("Y Button!");
         }
-        if (Input.GetButtonDown("1P_LBmp") || Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetButtonDown("1P_LBmp"))
         {
-            ammo++;
-            Debug.Log("총알 획득!");
+                        
         }
         if (Input.GetButtonDown("1P_RBmp"))
         {
             Debug.Log("회피!");
+            if (!_canDash)
+               return;
+            StartCoroutine(Dash());
         }
         if (Input.GetButtonDown("1P_SelectBtn"))
         {
@@ -301,19 +303,17 @@ public class Player : MonoBehaviour
         }
         if (Input.GetButtonDown("2P_YBtn") || Input.GetKeyDown(KeyCode.Z))
         {
+            
+        }
+        if (Input.GetButtonDown("2P_LBmp") || Input.GetKeyDown(KeyCode.LeftShift))
+        {
             if (!_canDash)
                 return;
             StartCoroutine(Dash());
             Debug.Log("Y Button!");
         }
-        if (Input.GetButtonDown("2P_LBmp") || Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            ammo++;
-            Debug.Log("총알 획득!");
-        }
         if (Input.GetButtonDown("2P_RBmp"))
         {
-            Debug.Log("회피!");
         }
         if (Input.GetButtonDown("2P_SelectBtn"))
         {
