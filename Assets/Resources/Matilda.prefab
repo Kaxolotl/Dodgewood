@@ -633,7 +633,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834790873941976}
-  m_LocalRotation: {x: 0.6755901, y: 0.0002679712, z: 0.7372773, w: -0.0002944892}
+  m_LocalRotation: {x: 0.67559016, y: 0.00026797122, z: 0.7372774, w: -0.00029448923}
   m_LocalPosition: {x: 0.06344748, y: -0.024494896, z: -0.1318282}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
   m_Children:
@@ -1053,7 +1053,7 @@ Animator:
   m_GameObject: {fileID: 1654420437124410}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 1b2cc2f1de476de418959f7cbb519f89, type: 3}
-  m_Controller: {fileID: 9100000, guid: 0c4a299c56e5824459ff9a739991091c, type: 2}
+  m_Controller: {fileID: 9100000, guid: c9d98ac97f0a19e418a817ee201c83f2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1072,6 +1072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f30094ae8b493d4486cda32107bd35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameManager: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -1079,6 +1080,8 @@ MonoBehaviour:
   bullet: {fileID: 1351629573317114, guid: 6f9d64915db89a84493db81f3ad2a5fd, type: 2}
   speed: 20
   _ammo: 0
+  playerNum: 0
+  _canDash: 0
 --- !u!136 &136811789375090788
 CapsuleCollider:
   m_ObjectHideFlags: 1

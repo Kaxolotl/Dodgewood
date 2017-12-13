@@ -2284,10 +2284,6 @@ MonoBehaviour:
   fieldSize: {x: 74, y: 0, z: 47}
   ammo: {fileID: 1339200575780004, guid: 0d992e476b6a583488155f55c2ffb866, type: 2}
   ammos: []
-  matilda: {fileID: 0}
-  captain: {fileID: 0}
-  navi: {fileID: 0}
-  terminator: {fileID: 0}
 --- !u!1 &1189960174
 GameObject:
   m_ObjectHideFlags: 0

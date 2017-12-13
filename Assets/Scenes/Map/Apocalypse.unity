@@ -868,10 +868,6 @@ MonoBehaviour:
   fieldSize: {x: 74, y: 0, z: 46}
   ammo: {fileID: 1339200575780004, guid: 0d992e476b6a583488155f55c2ffb866, type: 2}
   ammos: []
-  matilda: {fileID: 1654420437124410, guid: e340cbd77ccc126499a2383bab455d5f, type: 2}
-  captain: {fileID: 1654420437124410, guid: e340cbd77ccc126499a2383bab455d5f, type: 2}
-  navi: {fileID: 1654420437124410, guid: e340cbd77ccc126499a2383bab455d5f, type: 2}
-  terminator: {fileID: 1654420437124410, guid: e340cbd77ccc126499a2383bab455d5f, type: 2}
 --- !u!23 &1048562418
 MeshRenderer:
   m_ObjectHideFlags: 0
