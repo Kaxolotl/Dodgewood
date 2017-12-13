@@ -145,6 +145,8 @@ public class Player : MonoBehaviour
 
             UIManager.Instance.PlayWin();
             GameManager.Instance.nowPlayer = 1;
+            GameOver();
+            GameManager.Instance.GameOver();
             GameManager.Instance.gameStop = true;
             Time.timeScale = 0.01f;
         }
