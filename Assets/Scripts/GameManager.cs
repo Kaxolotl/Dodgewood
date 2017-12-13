@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
     public int fourthScore = 0;
     public int fifthScore = 0;
 
+    public GameObject matilda;
+    public GameObject captain;
+    public GameObject navi;
+    public GameObject terminator;
+
     public AudioSource _audio;
     public AudioClip _BGM;
 
@@ -53,13 +58,19 @@ public class GameManager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
 
+        matilda = Resources.Load<GameObject>("matilda");
+        captain = Resources.Load<GameObject>("captain");
+        navi = Resources.Load<GameObject>("navi");
+        terminator = Resources.Load<GameObject>("terminator");
+
         _audio = GetComponent<AudioSource>();
     }
 
     public void GameOver()
     {
         StopBGM();
-        RankingUpdate();
+        if(gameMode == 1)
+            RankingUpdate();
         gameMode = 0;
         player_1 = 0;
         player_2 = 0;

@@ -108,17 +108,19 @@ public class UIManager : MonoBehaviour
     
     public void UIInit()
     {
-        player1_portrait.sprite = Resources.Load<Sprite>("portrait" + GameManager.Instance.player_1);
+        player1_portrait.sprite = Resources.Load<Sprite>("portrait_" + GameManager.Instance.player_1.ToString());
         player1 = GameObject.FindGameObjectWithTag("player_1").GetComponent<Player>();
         scoreUI.gameObject.SetActive(true);
         player2UI.gameObject.SetActive(false);
 
         if (GameManager.Instance.gameMode == 2)
         {
-            player2_portrait.sprite = Resources.Load<Sprite>("portrait" + GameManager.Instance.player_2);
+            player2_portrait.sprite = Resources.Load<Sprite>("portrait_" + GameManager.Instance.player_2.ToString());
             player2 = GameObject.FindGameObjectWithTag("player_2").GetComponent<Player>();
             scoreUI.gameObject.SetActive(false);
             player2UI.gameObject.SetActive(true);
+            Debug.Log("portrait_" + GameManager.Instance.player_1.ToString());
+            Debug.Log("portrait_" + GameManager.Instance.player_2.ToString());
         }
 
     }
@@ -160,7 +162,6 @@ public class UIManager : MonoBehaviour
         AmmoUpdate(1, player1.ammo);
         if(GameManager.Instance.gameMode == 2)
         {
-            Debug.Log(player2.ammo);
             AmmoUpdate(2, player2.ammo);
         }
     }

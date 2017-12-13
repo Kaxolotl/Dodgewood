@@ -30,18 +30,9 @@ public class Field : MonoBehaviour
 	public	GameObject	ammo;
 	public	List<GameObject>	ammos;
 
-    public GameObject matilda;
-    public GameObject captain;
-    public GameObject navi;
-    public GameObject terminator;
 
     void Awake()
     {
-
-        matilda = Resources.Load<GameObject>("matilda");
-        captain = Resources.Load<GameObject>("matilda");
-        navi = Resources.Load<GameObject>("matilda");
-        terminator = Resources.Load<GameObject>("matilda");
 
 
         CreateAmmo();
@@ -121,22 +112,22 @@ public class Field : MonoBehaviour
         if (charNum == 0)
         {
             Debug.Log("M");
-            return matilda;
+            return GameManager.Instance.matilda;
         }
         else if (charNum == 1)
         {
             Debug.Log("C");
-            return captain;
+            return GameManager.Instance.captain;
         }
         else if (charNum == 2)
         {
             Debug.Log("N");
-            return navi;
+            return GameManager.Instance.navi;
         }
         else
         {
             Debug.Log("T");
-            return terminator;
+            return GameManager.Instance.terminator;
         }
     }
 }
