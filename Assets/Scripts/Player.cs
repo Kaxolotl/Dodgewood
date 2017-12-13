@@ -220,31 +220,29 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("1P_ABtn"))
         {
-            Debug.Log("A Button!");
+            
         }
         if (Input.GetButtonDown("1P_BBtn"))
         {
-            Debug.Log("B Button!");
+            
         }
-        if ((Input.GetButtonDown("1P_XBtn") || Input.GetKeyDown(KeyCode.Space)) && _canShoot && ammo == 3)
+        if ((Input.GetButtonDown("1P_XBtn")) && _canShoot && ammo == 3)
         {
             StartCoroutine(Shoot());
         }
-        if (Input.GetButtonDown("1P_YBtn") || Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetButtonDown("1P_YBtn"))
         {
-            if (!_canDash)
-                return;
-            StartCoroutine(Dash());
-            Debug.Log("Y Button!");
         }
-        if (Input.GetButtonDown("1P_LBmp") || Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetButtonDown("1P_LBmp"))
         {
-            ammo++;
-            Debug.Log("총알 획득!");
+                        
         }
         if (Input.GetButtonDown("1P_RBmp"))
         {
             Debug.Log("회피!");
+            if (!_canDash)
+               return;
+            StartCoroutine(Dash());
         }
         if (Input.GetButtonDown("1P_SelectBtn"))
         {
@@ -301,19 +299,17 @@ public class Player : MonoBehaviour
         }
         if (Input.GetButtonDown("2P_YBtn") || Input.GetKeyDown(KeyCode.Z))
         {
+            
+        }
+        if (Input.GetButtonDown("2P_LBmp") || Input.GetKeyDown(KeyCode.LeftShift))
+        {
             if (!_canDash)
                 return;
             StartCoroutine(Dash());
             Debug.Log("Y Button!");
         }
-        if (Input.GetButtonDown("2P_LBmp") || Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            ammo++;
-            Debug.Log("총알 획득!");
-        }
         if (Input.GetButtonDown("2P_RBmp"))
         {
-            Debug.Log("회피!");
         }
         if (Input.GetButtonDown("2P_SelectBtn"))
         {
