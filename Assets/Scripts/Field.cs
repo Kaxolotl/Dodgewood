@@ -40,7 +40,7 @@ public class Field : MonoBehaviour
         InvokeRepeating("SpawnAmmo", 3, 2f);
 
         UIManager.Instance.UIInit();
-        GameManager.Instance.PlayBGM();
+        GameManager.Instance.PlayGameBGM();
     }
 
     void CreateAmmo()

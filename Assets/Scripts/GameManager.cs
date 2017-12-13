@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
     public GameObject terminator;
 
     public AudioSource _audio;
-    public AudioClip _BGM;
+    public AudioClip _GameBGM;
+    public AudioClip _IntroBGM;
 
     private void Awake()
     {
@@ -68,8 +69,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        StopBGM();
-        if(gameMode == 1)
+        _audio.Stop();
+        PlayIntroBGM();
+        if (gameMode == 1)
             RankingUpdate();
         gameMode = 0;
         player_1 = 0;
@@ -81,9 +83,15 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.shootscore = 0;
     }
 
-    public void PlayBGM()
+    public void PlayGameBGM()
     {
-        _audio.Play();
+        _audio.Stop();
+        _audio.PlayOneShot(_GameBGM);
+    }
+    public void PlayIntroBGM()
+    {
+        _audio.Stop();
+        _audio.PlayOneShot(_IntroBGM);
     }
     public void StopBGM()
     {
