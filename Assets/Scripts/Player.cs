@@ -173,6 +173,7 @@ public class Player : MonoBehaviour
     {
         _canShoot = false;
         _canMove = false;
+        _canDash = false;
 
         UIManager.Instance.score += 100;
         UIManager.Instance.shootscore++;
@@ -189,6 +190,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         _canMove = true;
         _canShoot = true;
+        _canDash = true;
     }
 
     IEnumerator Dash()
@@ -197,11 +199,13 @@ public class Player : MonoBehaviour
         _canDash = false;
         _Dashing = true;
         speed = 50;
+        animator.SetBool("isDash", true);
         yield return new WaitForSeconds(0.2f);
-        
+
+        animator.SetBool("isDash", false);
         _Dashing = false;
         speed = 20;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(0.1f);
 
         _canDash = true;
     }
